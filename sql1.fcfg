@@ -1,0 +1,14 @@
+% start S
+
+S[SEM=(?np + " WHERE " + ?vp)] -> NP[SEM=?np] VP[SEM=?vp]
+
+# NP handles the SELECT clause
+NP[SEM='SELECT Close FROM consol'] -> 'What' 'was' 'the' 'close' 'price'
+NP[SEM='SELECT Close FROM consol'] -> 'What' 'was' 'the' 'closing' 'price'
+NP[SEM='SELECT Close FROM consol'] -> 'What' 'was' 'close' 'price'
+
+# VP handles WHERE conditions
+VP[SEM=(?comp + " AND " + ?date)] -> Company[SEM=?comp] Date[SEM=?date]
+
+Company[SEM='Company="Tata Motors"'] -> 'of' 'Tata' 'Motors'
+Date[SEM='Date="1991-Jan-02"'] -> 'on' '1991-Jan-02'
